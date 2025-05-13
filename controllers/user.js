@@ -21,7 +21,8 @@ const generateTokens = (user) => {
 
 const loginOrSignUp = async (req, res) => {
     const { id_token } = req.body;
-
+    // console.log("TOKEN ---> ", id_token);
+    
     try {
         const ticket = await client.verifyIdToken({
             idToken: id_token,
@@ -59,7 +60,7 @@ const loginOrSignUp = async (req, res) => {
             refreshToken,
             isNewUser,
         });
-
+        console.info('User verified:', email);
 
     } catch (error) {
         console.error("Login error:", error);
